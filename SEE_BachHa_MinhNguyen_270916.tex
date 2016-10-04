@@ -27,23 +27,20 @@
         \item Measuring principle: linear comparison
         \item Measuring method:
             \begin{itemize}
-                \item Robot's start point and end point will be marked each with two parallel lines. One line behind the rear wheels, which is parallel to the wheel axle. The second line is in front of the front wheel and is parallel to the first line.
-                \item The robot center point is the center of the line P draw from the middle of the rear wheel axle, and is perpendicular to the first two lines.
-                \item That line also represent the robot's orientation.
-                \item After each run, the start center point and stop center point are connected to make a line L.
-                \item The x axis and y axis will be parallel with one of the white paper's edge.
-                \item The robot, at the starting point, will be placed parallel to one of the paper's edge and will always has the pose (0,0,0)
-                \item The length of line L and the angle between L and the x axis will be measured to calculate the robot's x,y coordinate.
-                \item The robot's orientation is the angle between line P of the stop and the x axis.
+                \item To limit amount of alignment error and external influences, start pose and end pose are measured with an rectangle ``enclosure'' which just barely fits the robot. The enclosure will have markings aligned with the x-axis (front and back) of the robot. Using the markings on the enclosure can minimize errors from alignment, and ensuring the robot is not moved when the enclosure is fitted on at start and end pose can reduce external influences on the measurement.
+                \item Displacement will be measured between midpoints of the lines connecting the front and back markings at start and end pose. This line also represents the relative pose of the start and end point.
+                \item At the beginning of the measurement, the robot is placed within the enclosure aligned to a predefined starting location.
+                \item After removing the enclosure and executing the movement command, the enclosure is carefully placed back on around the robot again, and the marking of the end pose will be noted.
+                \item The distance between the midpoints and the change in angles between the lines connecting the markings between the poses respectively represent the linear and angular displacements of the movement.
             \end{itemize}
     \end{itemize}
 
     \item \textbf{Potential error source:}
     \begin{itemize}
         \item The starting placement.
-        \item Drawing and measuring of line L and P.
-        \item Measurement of angle between line L or P and the x axis.
-        \item Rounding of calculation from length and angle to x,y coordination.
+        \item Drawing and measuring of lines and midpoints.
+        \item Measurement of angles between lines.
+        \item Rounding of calculation from lengths and angles to x,y coordination.
         \item Error of the measurement facility.
     \end{itemize}
 
