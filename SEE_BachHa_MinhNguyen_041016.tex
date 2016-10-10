@@ -11,8 +11,9 @@
 \usepackage[export]{adjustbox}
 \usepackage[svgnames]{xcolor}                           % Enabling colors by their 'svgnames'
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats
+\usepackage{subcaption}
 \usepackage{epstopdf}       % Converts .eps to .pdf
-\usepackage{subfig}         % Subfigures
+%\usepackage{subfig}         % Subfigures
 \usepackage{booktabs}       % Nicer tables
 \usepackage{fix-cm}         % Custom fontsizes
 \usepackage{listings}
@@ -129,16 +130,188 @@
     \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
     \section{Experiment results}
+
+    \begin{figure}[h!]
+        \begin{center}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=14cm,fbox]{images/poses_plot_5_experiments.png}
+            \caption{Recorded poses of the LeJOS robot executing five different motions.}
+        \end{center}
+    \end{figure}
+
+    \subsection{Going straight forward}
+    \begin{figure}[h!]
+        \begin{center}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=10cm,fbox]{images/poses_plot_1_straight.png}
+            \caption{Recorded poses of the LeJOS robot going straight forward.}
+        \end{center}
+    \end{figure}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_1_x_straight.png}
+            \caption{$x$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_1_y_straight.png}
+            \caption{$y$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_1_phi_straight.png}
+            \caption{$\phi$}
+        \end{subfigure}
+        \caption{Histograms of recorded coordinates and heading after straight movement}
+    \end{figure}
     
+    \newpage
+    \subsection{Going slightly left}
     \begin{figure}[h]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=13.0cm,fbox]{images/poses_plot_5_experiments.png}
-            \caption{Fully connected feedforward network with 10 source nodes, 2 hidden layers of 4 and 3 neurons, and one output neuron.}
+            \includegraphics[width=10cm,fbox]{images/poses_plot_2_slightLeft.png}
+            \caption{Recorded poses of the LeJOS robot going slightly left.}
         \end{center}
     \end{figure}
-    
-    \subsection{Going straight forward}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_2_x_slightLeft.png}
+            \caption{$x$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_2_y_slightLeft.png}
+            \caption{$y$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_2_phi_slightLeft.png}
+            \caption{$\phi$}
+        \end{subfigure}
+        \caption{Histograms of recorded coordinates and heading after a slightly left movement}
+    \end{figure}
+
+    \newpage
+    \subsection{Going slightly right}
+    \begin{figure}[h!]
+        \begin{center}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=12cm,fbox]{images/poses_plot_3_slightRight.png}
+            \caption{Recorded poses of the LeJOS robot going slightly right.}
+        \end{center}
+    \end{figure}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_3_x_slightRight.png}
+            \caption{$x$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_3_y_slightRight.png}
+            \caption{$y$}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\textwidth,fbox]{images/histogram_3_phi_slightRight.png}
+            \caption{$\phi$}
+        \end{subfigure}
+        \caption{Histograms of recorded coordinates and heading after a slightly right movement}
+    \end{figure}
+
+\newpage
+\subsection{Going left}
+\begin{figure}[h!]
+    \begin{center}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=12cm,fbox]{images/poses_plot_4_left.png}
+        \caption{Recorded poses of the LeJOS robot going left.}
+    \end{center}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_4_x_left.png}
+        \caption{$x$}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_4_y_left.png}
+        \caption{$y$}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_4_phi_left.png}
+        \caption{$\phi$}
+    \end{subfigure}
+    \caption{Histograms of recorded coordinates and heading after a left movement.}
+\end{figure}
+
+\newpage
+\subsection{Going right}
+\begin{figure}[h!]
+    \begin{center}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=12cm,fbox]{images/poses_plot_5_right.png}
+        \caption{Recorded poses of the LeJOS robot going right.}
+    \end{center}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_5_x_right.png}
+        \caption{$x$}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_5_y_right.png}
+        \caption{$y$}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \setlength{\fboxsep}{0.5pt} %
+        \setlength{\fboxrule}{0.5pt}
+        \includegraphics[width=\textwidth,fbox]{images/histogram_5_phi_right.png}
+        \caption{$\phi$}
+    \end{subfigure}
+    \caption{Histograms of recorded coordinates and heading after a right movement.}
+\end{figure}
 
 \end{document}
