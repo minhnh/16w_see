@@ -19,6 +19,8 @@
 \usepackage{listings}
 \usepackage{soul}
 
+\usepackage{hyperref}
+
 \usepackage[foot=30pt,margin=1in]{geometry}
 
 % Custom sectioning (sectsty package)
@@ -129,6 +131,79 @@
     \maketitle
     \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
+    \section{Detailed experimentation description}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/Img1}
+        \caption{Experiment setup}
+        \label{fig:img1}
+    \end{figure}
+        
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\linewidth]{images/IMAG0144}
+        \caption{Starting point}
+        \label{fig:img2}
+    \end{figure}
+    
+    \begin{figure}[!tbp]
+        \centering
+        \begin{minipage}[b]{0.9\textwidth}
+            \includegraphics[width=1\linewidth]{images/IMAG0142}
+            \caption{Left marker}
+            \label{fig:img3}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.9\textwidth}
+            \includegraphics[width=1\linewidth]{images/IMAG0141}
+            \caption{Right marker}
+            \label{fig:img4}
+        \end{minipage}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{images/IMAG0139}
+        \caption{End point mark}
+        \label{fig:img5}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\linewidth]{images/IMAG0148}
+        \caption{Mark measuring}
+        \label{fig:img6}
+    \end{figure}
+    
+    \subsection{Robot design}
+    \begin{itemize}
+        \item Wheels arrangement and light marker are the most important aspect of the robot design:
+        \begin{itemize}
+            \item The robot has two large front wheel and a small rear caster wheel.
+            \item Two light markers are placed in the front, one on the left side and the other on the right side.
+            \item These markers are placed closed to the ground.
+            \item The light markers are also covered with tape, which have a small hole, to make the light mark on the ground similar to a point.
+            \item The placement of the light markers is done so that the two point marks on the ground make a line, which is parallel to the wheel axle and its middle point is on the center line of the robot.
+        \end{itemize}
+    \end{itemize}
+
+    \pagebreak
+    \subsection{Measurement process}
+    \begin{itemize}
+        \item Before the measurements, we taped the white paper sheet onto a flat table surface. We make sure that the paper is as flat as possible.
+        \item A x,y-coordinate system and a start point (figure \ref{fig:img2}) is drawn on the paper.
+        \item Measurement for each experiment is done as follow:
+        \begin{enumerate}
+            \item Robot is initiated and placed onto the start point (figure \ref{fig:img2}). The two light marks should be on pre-marked points (figure \ref{fig:img3}, \ref{fig:img4}). The rear caster wheel's axle must be perpendicular to the robot's heading direction.
+            \item Robot is started with as little force as possible. We make sure not to touch the robot while it is moving.
+            \item After the robot stop, the two light marks on the paper is marked with pencil. We tried not to touch the robot while doing the marking (figure \ref{fig:img5}).
+            \item The x,y-coordinate of two pencil marks is measured with rulers and is recorded (figure \ref{fig:img6}).
+            \item The robot is then placed back onto the starting position for the next experiment.
+        \end{enumerate}
+    
+    \end{itemize}
+
     \section{Experiment results}
 
     \begin{figure}[h!]
@@ -140,6 +215,7 @@
         \end{center}
     \end{figure}
 
+    \newpage
     \subsection{Going straight forward}
     \begin{figure}[h!]
         \begin{center}
