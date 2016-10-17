@@ -137,7 +137,7 @@
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.9\linewidth]{images/cameraCalib_sample.png}
-        \caption{Image calibration using MATLAB}
+        \caption{\textcolor{red}{Image calibration using MATLAB}}
         \label{fig:img1}
     \end{figure}
 
@@ -174,24 +174,40 @@
     \end{itemize}
 
     \subsection{Calibration results}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/cameraCalib_perspectives.png}
+        \caption{\textcolor{red}{Fitted chessboards}}
+        \label{fig:img2}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/cameraCalib_errors.png}
+        \caption{\textcolor{red}{Mean reprojection errors for each images}}
+        \label{fig:img3}
+    \end{figure}
+
     \begin{itemize}
         \item Intrinsic camera matrix:
+
         \[ \left[ \begin{matrix}
-        1451.495    & 0           & 969.512    \\
-        0           & 1451.626    & 552.246    \\
-        0           & 0           & 1
+        \textcolor{red}{1456.941} & 0 & \textcolor{red}{953.417} \\
+        0 & \textcolor{red}{1460.703} & \textcolor{red}{537.635} \\
+        0 & 0            & 1
         \end{matrix} \right] \]
 
-        \item Radial distortion: $\left[ \begin{matrix} 0.0012 & 0.0043 \end{matrix} \right]$
+        \item \textcolor{red}{Radial distortion: $\left[ \begin{matrix} -0.00338 & 0.0773 \end{matrix} \right]$}
 
-        \item Mean reprojection error: $0.263$
+        \item \textcolor{red}{Mean reprojection error: $0.469$}
     \end{itemize}
 
     \newpage
     \section{Principal Component Analysis}
 
     \subsection{Going straight forward}
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
