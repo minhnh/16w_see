@@ -133,7 +133,8 @@
     \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
     \section{Camera Calibration}
-
+	
+    
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.9\linewidth]{images/cameraCalib_sample.png}
@@ -148,8 +149,27 @@
         969.512     & 552.246  & 1
     \end{matrix} \right] \]
 
-    Mean reprojection error: $0.263$
+    Mean reprojection error: $0.263$  \\
+    
+    \newpage
+    Calibration procedure:
+    \begin{enumerate}
+		\item The camera is mounted on a tripod at a fixed position.
+        \item 40 pictures from different angles of the calibration chess board is taken.
+        \item These 40 pictures are fed to Matlab's camera calibration toolbox.
+        \item The side length of each square (72 mm) is provided to the toolbox.
+        \item The calibration process is done automatically by the toolbox
+    \end{enumerate}
 
+    Note:
+    \begin{itemize}
+    	\item Calibration chess board has size 9x7 squares.
+        \item Side length of each square is 72 mm.
+        \item Bad lighting condition can lead to long calibration calculation and inaccurate result.
+        \item Calibration board should take most of the space in a picture.
+        \item The facing angle of the board to the camera should not be too extreme, otherwise the calibration toolbox will not be able to recognize the board.
+    \end{itemize}
+    
     \newpage
     \section{Principal Component Analysis}
 
