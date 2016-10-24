@@ -17,7 +17,7 @@ function fitGaussian(data, direction)
     if dim ==2
     [coeffs, projected_coords, latent] = pca(data);
     chiSquareTestGaussian(projected_coords(:,1),0.1,[' projection of 1st principal component during ',direction,' movement,' ])
-    chiSquareTestGaussian(projected_coords(:,2),0.1,[' projection of 2st principal component during ',direction,' movement,'])
+    chiSquareTestGaussian(projected_coords(:,2),0.1,[' projection of 2nd principal component during ',direction,' movement,'])
 
     figure(1);
     subplot(1, 2, 1);
