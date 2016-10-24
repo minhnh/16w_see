@@ -1,4 +1,3 @@
-Straight:
 
 ans =
 
@@ -10,8 +9,10 @@ ans =
 Data: projection of 2st principal component during  Straight movement, is Gaussian distributed with: mean = 1.3998e-13 and standard deviation sigma = 1.0014 with confidence 0.9%.
 
 
------
-Slight left
+ans =
+
+Data: angular error during   Straight movement, is Gaussian distributed with: mean = -1.0248e-16 and standard deviation sigma = 0.81316 with confidence 0.9%.
+
 
 ans =
 
@@ -23,8 +24,10 @@ ans =
 Data:  projection of 2st principal component during  Slight Left movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
 
 
------
-Slight right
+ans =
+
+Data:  angular error during   Slight Left movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
+
 
 ans =
 
@@ -36,8 +39,10 @@ ans =
 Data: projection of 2st principal component during  Slight Right movement, is Gaussian distributed with: mean = 1.508e-13 and standard deviation sigma = 1.3577 with confidence 0.9%.
 
 
------
-Left
+ans =
+
+Data:  angular error during   Slight Right movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
+
 
 ans =
 
@@ -49,8 +54,10 @@ ans =
 Data:  projection of 2st principal component during  Left movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
 
 
------
-Right
+ans =
+
+Data:  angular error during   Left movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
+
 
 ans =
 
@@ -60,5 +67,10 @@ Data: projection of 1st principal component during  Right movement, is Gaussian 
 ans =
 
 Data: projection of 2st principal component during  Right movement, is Gaussian distributed with: mean = -6.6264e-14 and standard deviation sigma = 1.145 with confidence 0.9%.
+
+
+ans =
+
+Data:  angular error during   Right movement, can not be proven to have Gaussian Distribution with confidence 0.9%.
 
 
