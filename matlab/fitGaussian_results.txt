@@ -72,3 +72,4 @@ Data: projection of 2nd principal component during  Right movement, is Gaussian 
 ans =
 
 Data: angular error during   Right movement, is Gaussian distributed with: mean = 1.9757e-14 and standard deviation sigma = 0.99084 with confidence 0.9%.
+

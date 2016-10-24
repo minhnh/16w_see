@@ -1,4 +1,4 @@
-function [ out ] = chiSquareTestGaussian(data, confidence, var_name )
+function [ out ] = chiSquareTestGaussian(data, confidence, var_name, num_bin )
 %% Do chi square test for given 1-D data
 %Authors P.Lukin,  E. Ovchinnikova
 
@@ -8,9 +8,9 @@ sigma = sqrt(var(data));
 data = sort(data);
 
 % Determine number og histogram bins
-b = 2;
+% b = num_bin;
 n = length(data);
-r = round(b*log(n));
+r = num_bin;
 interval_size = (max(data)-min(data))/r;
 
 

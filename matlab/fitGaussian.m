@@ -6,9 +6,10 @@ function fitGaussian(data, direction)
     
     if dim==1
        normPhi = rad2deg(data) - mean(rad2deg(data));
-       chiSquareTestGaussian(normPhi,0.1,[' angular error during  ',direction,' movement,' ])
        figure(3)
-       hist(normPhi);
+       h3 = histogram(normPhi);
+       chiSquareTestGaussian(normPhi, 0.1,...
+           [' angular error during  ',direction,' movement,' ], h3.NumBins)
        xlabel('Angular error, deg');
        ylabel('Frequency');
        title(strcat('Deviation from mean angle. Histogram for Going ', direction));       
@@ -16,10 +17,27 @@ function fitGaussian(data, direction)
     
     if dim ==2
     [coeffs, projected_coords, latent] = pca(data);
-    chiSquareTestGaussian(projected_coords(:,1),0.1,[' projection of 1st principal component during ',direction,' movement,' ])
-    chiSquareTestGaussian(projected_coords(:,2),0.1,[' projection of 2nd principal component during ',direction,' movement,'])
 
     figure(1);
+    subplot(2, 1, 1);
+    h1 = histogram(projected_coords(:,1));
+    xlabel('Projected coordinates, mm');
+    ylabel('Frequency');
+    title(strcat('1st Principal Comp. Histogram for Going ', direction));
+    subplot(2, 1, 2);
+    h2 = histogram(projected_coords(:,2));
+    xlabel('Projected coordinates, mm');
+    ylabel('Frequency');
+    title(strcat('2nd Principal Comp. Histogram for Going ', direction));
+    
+    chiSquareTestGaussian(projected_coords(:,1),0.1,...
+        [' projection of 1st principal component during ',direction,' movement,' ],...
+        h1.NumBins)
+    chiSquareTestGaussian(projected_coords(:,2),0.1,...
+        [' projection of 2nd principal component during ',direction,' movement,'],...
+        h2.NumBins)
+
+    figure(2);
     subplot(1, 2, 1);
     plot(projected_coords(:,2), projected_coords(:,1),'+');
     grid on
@@ -39,18 +57,6 @@ function fitGaussian(data, direction)
     ylabel('y');
     title('PCA vectors');
 
-    figure(2);
-    subplot(2, 1, 1);
-    hist(projected_coords(:,1));
-    xlabel('Projected coordinates');
-    ylabel('Frequency');
-    title(strcat('1st Principal Comp. Histogram for Going ', direction));
-    subplot(2, 1, 2);
-    hist(projected_coords(:,2));
-    xlabel('Projected coordinates');
-    ylabel('Frequency');
-    title(strcat('2nd Principal Comp. Histogram for Going ', direction));
-        
         
     end
     
