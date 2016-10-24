@@ -133,8 +133,24 @@
     \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
     
     \section{Principal Component Analysis}
+    \begin{itemize}
+    	\item All Gaussians are calculated from data, which are zero meaned.
+        \item There are cases, in which a Gaussian with 90\% confident cannot be fitted. The possible reasons for this problems are:
+        \begin{itemize}
+        	\item Er 
+        \end{itemize}
+
+    \end{itemize}
 
     \subsection{Going straight forward}
+    Fitted Gaussian:
+    \begin{itemize}
+    	\item Confident: 90\%
+	    \item $1^{st}$ principle component: $\mu = -2.6873e-15 \quad \sigma = 9.6377$
+	    \item $2^{nd}$ principle component: $\mu = 1.3998e-13 \quad \sigma = 1.0014$
+	    \item Angular error: $\mu = -1.0248e-16 \quad \sigma = 0.81316$.
+    \end{itemize}
+    
     \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
@@ -159,9 +175,25 @@
             \caption{Histograms of coordinates projected onto principal components for straight forward movement.}
         \end{center}
     \end{figure}
+    \begin{figure}[h!]
+        \begin{center}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\linewidth,fbox]{images/histogram_1_phi_straight.png}
+            \caption{Deviation from mean angle. Histogram for going straight.}
+        \end{center}
+    \end{figure}
 	
     \newpage
     \subsection{Going slightly left}
+    Fitted Gaussian:
+    \begin{itemize}
+    	\item Confident: 90\%
+	    \item $1^{st}$ principle component: $\mu = -6.7408e-14 \quad \sigma = 12.3834$
+	    \item $2^{nd}$ principle component: Cannot be fitted.
+	    \item Angular error: Cannot be fitted
+    \end{itemize}
+    
     \begin{figure}[h!]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
@@ -187,10 +219,25 @@
             \includegraphics[width=\linewidth,fbox]{images/pca_histogram_slightLeft.png}
             \caption{Histograms of coordinates projected onto principal components for slight left movements.}
         \end{center}
-    \end{figure}
+	\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+			\setlength{\fboxsep}{0.5pt} %
+			\setlength{\fboxrule}{0.5pt}
+			\includegraphics[width=\linewidth,fbox]{images/histogram_2_phi_slightLeft.png}
+			\caption{Deviation from mean angle. Histogram for going slight left.}
+		\end{center}
+	\end{figure}
 
     \newpage
     \subsection{Going slightly right}
+	    Fitted Gaussian:
+	    \begin{itemize}
+	       	\item Confident: 90\%
+		    \item $1^{st}$ principle component: $\mu = 6.0209e-14 \quad \sigma = 9.8442$
+		    \item $2^{nd}$ principle component: $\mu = 1.508e-13 \quad \sigma = 1.3577$
+		    \item Angular error: Cannot be fitted.
+	    \end{itemize}
     \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
@@ -218,8 +265,25 @@
         \end{center}
     \end{figure}
 
+	\begin{figure}[h!]
+		\begin{center}
+			\setlength{\fboxsep}{0.5pt} %
+			\setlength{\fboxrule}{0.5pt}
+			\includegraphics[width=\linewidth,fbox]{images/histogram_3_phi_slightRight.png}
+			\caption{Deviation from mean angle. Histogram for going slight right.}
+		\end{center}
+	\end{figure}
+ 
+
     \newpage
     \subsection{Going left}
+        Fitted Gaussian:
+        \begin{itemize}
+        	\item Confident: 90\%
+    	    \item $1^{st}$ principle component: $\mu = 9.7232e-15 \quad \sigma = 4.8132$
+    	    \item $2^{nd}$ principle component: Cannot be fitted.
+    	    \item Angular error: $\mu = 0 \quad \sigma = 1.2415$.
+        \end{itemize}
     \begin{figure}[h!]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
@@ -247,8 +311,25 @@
         \end{center}
     \end{figure}
 
+	\begin{figure}[h!]
+		\begin{center}
+			\setlength{\fboxsep}{0.5pt} %
+			\setlength{\fboxrule}{0.5pt}
+			\includegraphics[width=\linewidth,fbox]{images/histogram_4_phi_left.png}
+			\caption{Deviation from mean angle. Histogram for going left.}
+		\end{center}
+	\end{figure}
+	
+	
     \newpage
     \subsection{Going right}
+	 Fitted Gaussian:
+	 \begin{itemize}
+	    \item Confident: 90\%
+	  	\item $1^{st}$ principle component: $\mu = -7.7466e-14 \quad \sigma = 5.6995$
+	  	\item $2^{nd}$ principle component: $\mu = -9.9736e-14 \quad \sigma = 1.1463$
+	  	\item Angular error: $\mu = 1.9757e-14 \quad \sigma = 0.99084$.
+	 \end{itemize}
     \begin{figure}[h!]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
@@ -276,4 +357,12 @@
         \end{center}
     \end{figure}
 
+	\begin{figure}[h!]
+		\begin{center}
+			\setlength{\fboxsep}{0.5pt} %
+			\setlength{\fboxrule}{0.5pt}
+			\includegraphics[width=\linewidth,fbox]{images/histogram_5_phi_right.png}
+			\caption{Deviation from mean angle. Histogram for going right.}
+		\end{center}
+	\end{figure}
 \end{document}
