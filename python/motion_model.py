@@ -64,8 +64,9 @@ def motion_model_velocity(xt, ut, x_prevt, delta_t):
 
 #robot run time: 6.28s, 3.93s, 6.28s, 3.93s, 6.28s
 directory_names = ['straight', 'left', 'slight_left', 'right', 'slight_right']
-v = [-10., -10., -10., -10., -10.]
-omega = [0., np.radians(-22.92), np.radians(-4.77), np.radians(22.92), np.radians(4.77)]
+# speed is 100mm/s
+v = [100., 100., 100., 100., 100.]
+omega = [0., np.radians(22.92), np.radians(4.77), np.radians(-22.92), np.radians(-4.77)]
 data = read_data(directory_names)
 
 motion_model_data = list()
