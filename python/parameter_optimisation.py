@@ -1,3 +1,4 @@
+#/usr/bin/env python3
 import numpy as np
 from scipy.optimize import minimize
 
@@ -66,7 +67,7 @@ def F(alphas, X):
 
 def F_prime(alphas, X):
     d = np.zeros(len(alphas))
-    for i in xrange(len(alphas)):
+    for i in range(len(alphas)):
         s = 0.
         if i == 0:
             for x in X:
