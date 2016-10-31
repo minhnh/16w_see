@@ -6,4 +6,5 @@
 *~
 *.pyc
 *.dat
+.ipynb_checkpoints
 
