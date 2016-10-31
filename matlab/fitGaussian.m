@@ -49,12 +49,12 @@ function fitGaussian(data, direction)
     mean_x = mean(data(:,1));
     mean_y = mean(data(:,2));
     plot(data(:,1), data(:,2), 'g+',...
-        [mean_x, mean_x + coeffs(1)*sqrt(latent(1))], [mean_y, mean_y + coeffs(3)*sqrt(latent(1))], 'r',...
-        [mean_x, mean_x + coeffs(2)*sqrt(latent(2))], [mean_y, mean_y + coeffs(4)*sqrt(latent(2))], 'b');
+        [mean_x, mean_x + coeffs(1)*sqrt(latent(1))], [mean_y, mean_y - coeffs(3)*sqrt(latent(1))], 'r',...
+        [mean_x, mean_x + coeffs(2)*sqrt(latent(2))], [mean_y, mean_y - coeffs(4)*sqrt(latent(2))], 'b');
     axis equal
     grid on
-    xlabel('x');
-    ylabel('y');
+    xlabel('x (mm)');
+    ylabel('y (mm)');
     title('PCA vectors');
 
         
