@@ -145,6 +145,37 @@ def plot_trajectory(trajectories):
     for trajectory in trajectories:
         plt.plot(trajectory[:,0], trajectory[:,1])
     plt.show()
+    
+def plot_real_trajectories(data, nb_experiment):
+    """
+    @param data: data of shape [time, x, y, theta]
+    @param nb_experiment: number of repeated experiments
+    """
+    nb_samples_per_experiment = int(len(data)/nb_experiment)
+    
+    trajectories = list()
+    for i in range(nb_experiment):
+        poses = list()
+        
+        poses.append([0, 0, 0])
+        pose_start_index = i*nb_samples_per_experiment
+        delta_theta = data[pose_start_index,3] - data[0,3]
+        R = np.array([[np.cos(delta_theta), -np.sin(delta_theta)],
+                       [np.sin(delta_theta),np.cos(delta_theta)]])
+        for j in range(1,nb_samples_per_experiment):
+            sample_index = i*nb_samples_per_experiment + j
+            p = [0, 0, 0]
+            p[0] = data[sample_index,1] - data[pose_start_index,1]
+            p[1] = data[sample_index,2] - data[pose_start_index,2]
+            p[2] = data[sample_index,3] - data[pose_start_index,3]
+            poses.append(p)
+        
+        poses = np.array(poses)
+        poses[:,:2] = np.dot(poses[:,:2],R)
+        trajectories.append(poses)
+    
+    trajectories = np.array(trajectories)
+    plot_trajectory(trajectories)
 
 
 if __name__ == "__main__":
