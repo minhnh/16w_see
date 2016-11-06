@@ -60,6 +60,11 @@ def read_data(directory_names):
 
     return data_store
 
+def sample_gaussian(u, alphas):
+    v_gaussian = random.normalvariate(0, alpha[0]*abs(u[0]) + alpha[1]*abs(u[1]))
+    omega_gaussian = random.normalvariate(0, alpha[2]*abs(u[0]) + alpha[3]*abs(u[1]))
+    gamma_gaussian = random.normalvariate(0, alpha[4]*abs(u[0]) + alpha[5]*abs(u[1]))
+    return [v_gaussian, omega_gaussian, gamma_gaussian]
 
 def motion_model_velocity(xt, ut, x_prevt, delta_t):
     mu = 0.5 * ((x_prevt[0] - xt[0]) * np.cos(x_prevt[2]) + (x_prevt[1] - xt[1]) * np.sin(x_prevt[2])) / ((x_prevt[1] - xt[1]) *
@@ -74,18 +79,24 @@ def motion_model_velocity(xt, ut, x_prevt, delta_t):
     return np.array([ut[0], ut[1], v_hat, omega_hat, gamma_hat])
 
 
-def sample_motion_model_velocity(u_current, pose_past, alpha, delta_t):
+def sample_motion_model_velocity(u_current, pose_past, alpha, delta_t, sampled_gaussian = 0):
     """
     @param u_current: velocity command [v w]
     @param pose_past: pose [x y theta] at time step t-1
     @param alpha: 6-vector of the model's parameters
     @param delta_t: time difference between 2 time steps
+    @param sampled_gaussian: pre-sampled guassian
     @return: pose [x y theta] at time step t
     """
-    random.seed()
-    v_hat = u_current[0] + random.normalvariate(0, alpha[0]*abs(u_current[0]) + alpha[1]*abs(u_current[1]))
-    omega_hat = u_current[1] + random.normalvariate(0, alpha[2]*abs(u_current[0]) + alpha[3]*abs(u_current[1]))
-    gamma_hat = random.normalvariate(0, alpha[4]*abs(u_current[0]) + alpha[5]*abs(u_current[1]))
+    if (sampled_gaussian == 0):
+        random.seed()
+        v_hat = u_current[0] + random.normalvariate(0, alpha[0]*abs(u_current[0]) + alpha[1]*abs(u_current[1]))
+        omega_hat = u_current[1] + random.normalvariate(0, alpha[2]*abs(u_current[0]) + alpha[3]*abs(u_current[1]))
+        gamma_hat = random.normalvariate(0, alpha[4]*abs(u_current[0]) + alpha[5]*abs(u_current[1]))
+    else:
+        v_hat = u_current[0] + sampled_gaussian[0]
+        omega_hat = u_current[1] + sampled_gaussian[1]
+        gamma_hat = sampled_gaussian[2]
 
     x_current = (pose_past[0]
                  - v_hat/omega_hat*np.sin(pose_past[2])
@@ -98,6 +109,42 @@ def sample_motion_model_velocity(u_current, pose_past, alpha, delta_t):
     theta_current = pose_past[2] + omega_hat*delta_t + gamma_hat*delta_t
 
     return (x_current, y_current, theta_current)
+
+def predict_trajectory(u, pose_start, alpha, delta_t, duration, nb_experiment, single_gaussian = False):
+    """
+    @param u: velocity command [v w]
+    @param pose_start: pose [x y theta] at time step t = 0
+    @param alpha: 6-vector of the model's parameters
+    @param delta_t: time difference between 2 time steps
+    @param duration: running time
+    @param nb_experiment: number of time the experiment is repeated
+    @param single_gaussian: use single gaussian sample for each repeating exps
+    @return: trajectory plot
+    """
+    n = int(duration/delta_t)
+    trajectories = list()
+    for i in range(nb_experiment):
+        pose_current = pose_start
+        poses = list()
+        
+        gaussian = 0
+        
+        if single_gaussian:
+            gaussian = sample_gaussian(u, alpha)
+        
+        poses.append(pose_current)
+        for j in range(n):
+            pose_current = sample_motion_model_velocity(u, pose_current, alpha, delta_t, sampled_gaussian = gaussian)
+            poses.append(pose_current)
+        
+        trajectories.append(poses)
+    
+    return np.array(trajectories)
+        
+def plot_trajectory(trajectories):
+    for trajectory in trajectories:
+        plt.plot(trajectory[:,0], trajectory[:,1])
+    plt.show()
 
 
 if __name__ == "__main__":
