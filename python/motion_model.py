@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import glob
 import os
+import sys
 import numpy as np
 from parameter_optimisation import optimise_parameters
 import random
+import matplotlib.pyplot as plt
 
 class Data(object):
     def __init__(self):
@@ -22,19 +24,20 @@ def read_data(directory_names):
         trajectories = list()
         trajectories_end = list()
         times = list()
-        
+
         files = list()
         for f in glob.glob("*.csv"):
             files.append(f)
             pass
-    
+
+        # trajectories are split based on files under directory_name
         for f in files:
             data = np.loadtxt(f,delimiter=',')
-            #data: shape(samples,4) -- [[time_stamp,x,y,gamma]]           
-            
+            #data: shape(samples,4) -- [[time_stamp,x,y,gamma]]
+
             poses = np.zeros((data.shape[0], 3))
             time_deltas = np.zeros(data.shape[0]-1)
-            
+
             poses[0,0] = 0.
             poses[0,1] = 0.
             poses[0,2] = 0.
@@ -42,15 +45,15 @@ def read_data(directory_names):
                 poses[i,0] = data[i,1] - data[0,1]
                 poses[i,1] = data[i,2] - data[0,2]
                 poses[i,2] = data[i,3] - data[0,3]
-                #time_deltas[i-1] = data[i,0] - data[i-1,0]
-                time_deltas[i-1] = data[i,0] - data[0,0]
+                time_deltas[i-1] = data[i,0] - data[i-1,0]
+                #time_deltas[i-1] = data[i,0] - data[0,0]
                 pass
-    
+
             trajectories.append(poses)
             trajectories_end.append(poses[-1])
             times.append(time_deltas)
             pass
-    
+
         data_store.trajectories.append(trajectories)
         data_store.trajectories_end.append(trajectories_end)
         data_store.time_deltas.append(times)
@@ -60,7 +63,7 @@ def read_data(directory_names):
 
     return data_store
 
-def sample_gaussian(u, alphas):
+def sample_gaussian(u, alpha):
     v_gaussian = random.normalvariate(0, alpha[0]*abs(u[0]) + alpha[1]*abs(u[1]))
     omega_gaussian = random.normalvariate(0, alpha[2]*abs(u[0]) + alpha[3]*abs(u[1]))
     gamma_gaussian = random.normalvariate(0, alpha[4]*abs(u[0]) + alpha[5]*abs(u[1]))
@@ -126,37 +129,37 @@ def predict_trajectory(u, pose_start, alpha, delta_t, duration, nb_experiment, s
     for i in range(nb_experiment):
         pose_current = pose_start
         poses = list()
-        
+
         gaussian = 0
-        
+
         if single_gaussian:
             gaussian = sample_gaussian(u, alpha)
-        
+
         poses.append(pose_current)
         for j in range(n):
             pose_current = sample_motion_model_velocity(u, pose_current, alpha, delta_t, sampled_gaussian = gaussian)
             poses.append(pose_current)
-        
+
         trajectories.append(poses)
-    
+
     return np.array(trajectories)
-        
+
 def plot_trajectory(trajectories):
     for trajectory in trajectories:
         plt.plot(trajectory[:,0], trajectory[:,1])
-    plt.show()
-    
+    #plt.show()
+
 def plot_real_trajectories(data, nb_experiment):
     """
     @param data: data of shape [time, x, y, theta]
     @param nb_experiment: number of repeated experiments
     """
     nb_samples_per_experiment = int(len(data)/nb_experiment)
-    
+
     trajectories = list()
     for i in range(nb_experiment):
         poses = list()
-        
+
         poses.append([0, 0, 0])
         pose_start_index = i*nb_samples_per_experiment
         delta_theta = data[pose_start_index,3] - data[0,3]
@@ -169,11 +172,11 @@ def plot_real_trajectories(data, nb_experiment):
             p[1] = data[sample_index,2] - data[pose_start_index,2]
             p[2] = data[sample_index,3] - data[pose_start_index,3]
             poses.append(p)
-        
+
         poses = np.array(poses)
         poses[:,:2] = np.dot(poses[:,:2],R)
         trajectories.append(poses)
-    
+
     trajectories = np.array(trajectories)
     plot_trajectory(trajectories)
 
@@ -191,9 +194,12 @@ if __name__ == "__main__":
         for j, trajectory in enumerate(trajectories):
             for k in range(len(trajectory)-1):
                 delta_t = data.time_deltas[i][j][k]
-                #mmv = motion_model_velocity(trajectory[k+1], (v[i], omega[i]), trajectory[k], delta_t)
-                mmv = motion_model_velocity(trajectory[k+1], (v[i], omega[i]), trajectory[0], delta_t)
+                mmv = motion_model_velocity(trajectory[k+1], (v[i], omega[i]), trajectory[k], delta_t)
+                #mmv = motion_model_velocity(trajectory[k+1], (v[i], omega[i]), trajectory[0], delta_t)
                 motion_model_data.append(mmv)
+                pass
+            pass
+        pass
     motion_model_data = np.array(motion_model_data)
 
 
