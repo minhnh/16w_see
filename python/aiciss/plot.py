@@ -12,9 +12,8 @@ def main():
     #plt.ylim([0, 7])
     #plt.show()
     data_short = data#[500:610]#[np.where(data[:, 1] < 1800)]#[500:525]
-    print(len(data))
+    #print(len(data))
     data_short[:, 2] = data_short[:, 2] + np.pi
-    matrix = get_transform_matrix_from_pose(data_short[0])
     x_dir = np.cos(data_short[:,2])# + data[:,0]
     y_dir = np.sin(data_short[:,2])# + data[:,1]
     plt.quiver(data_short[:,0], data_short[:,1], x_dir, y_dir, color='red')
