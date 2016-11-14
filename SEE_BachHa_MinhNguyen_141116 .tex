@@ -175,6 +175,7 @@
 	    \item Each sequence represents one experiment similar each hand measured experiment.
 	    \item Each sequence contains all data points in a window of 6 seconds.
 	    \item Each data point consists of a time stamp (in millisecond), name of observing camera, XY coordinate (in mm), and theta (in radian). Sample of data can be seen in figure \ref{Raw_data}
+	    \item Plot of raw data can be seen in figure 4,5,6,7, and 8.
     \end{itemize}
     
     \begin{figure}[h!]
@@ -186,7 +187,54 @@
             \label{Raw_data}
         \end{center}
     \end{figure}
+
+    \begin{figure}[h!]
+	\begin{center}
+		\setlength{\fboxsep}{0.5pt} %
+		\setlength{\fboxrule}{0.5pt}
+		\includegraphics[width=12cm,fbox]{images/raw_straight.png}
+		\caption{Sampled poses of the LeJOS robot going straight.}
+	\end{center}
+	\end{figure}
+
+    \begin{figure}[h!]
+	\begin{center}
+		\setlength{\fboxsep}{0.5pt} %
+		\setlength{\fboxrule}{0.5pt}
+		\includegraphics[width=12cm,fbox]{images/raw_left.png}
+		\caption{Sampled poses of the LeJOS robot going left.}
+	\end{center}
+\end{figure}
+
+    \begin{figure}[h!]
+	\begin{center}
+		\setlength{\fboxsep}{0.5pt} %
+		\setlength{\fboxrule}{0.5pt}
+		\includegraphics[width=12cm,fbox]{images/raw_slightLeft.png}
+		\caption{Sampled poses of the LeJOS robot going slight left.}
+	\end{center}
+	\end{figure}
+
+    \begin{figure}[h!]
+	\begin{center}
+		\setlength{\fboxsep}{0.5pt} %
+		\setlength{\fboxrule}{0.5pt}
+		\includegraphics[width=12cm,fbox]{images/raw_right.png}
+		\caption{Sampled poses of the LeJOS robot going right.}
+	\end{center}
+	\end{figure}
     
+	\begin{figure}[h!]
+		\begin{center}
+			\setlength{\fboxsep}{0.5pt} %
+			\setlength{\fboxrule}{0.5pt}
+			\includegraphics[width=12cm,fbox]{images/raw_slightRight.png}
+			\caption{Sampled poses of the LeJOS robot going slight right.}
+		\end{center}
+	\end{figure}
+    
+    
+    \newpage
     \subsection{Parameters calculation}
     \begin{itemize}
     	\item Alphas are parameters of the velocity motion model introduced by Thrun \cite{Thrun}.
@@ -242,96 +290,75 @@
 
     The parameters are then used to sample poses and compare with observed data.
 
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/recorded_poses_straight.png}
-            \caption{Recorded poses of the LeJOS robot going straight.}
-        \end{center}
-    \end{figure}
+	\begin{figure}[h!]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/recorded_poses_straight.png} % first figure itself
+			\caption{Recorded poses of the LeJOS robot going straight.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/sampled_poses_straight.png} % second figure itself
+			\caption{Sampled poses of the LeJOS robot going straight.}
+		\end{minipage}
+	\end{figure}
 
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/sampled_poses_straight.png}
-            \caption{Sampled poses of the LeJOS robot going straight.}
-        \end{center}
-    \end{figure}
-    
-    
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/recorded_poses_left.png}
-            \caption{Recorded poses of the LeJOS robot going left.}
-        \end{center}
-    \end{figure}
+	\begin{figure}[h!]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/recorded_poses_left.png} % first figure itself
+			\caption{Recorded poses of the LeJOS robot going left.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/sampled_poses_left.png} % second figure itself
+			\caption{Sampled poses of the LeJOS robot going left.}
+		\end{minipage}
+	\end{figure}
 
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/sampled_poses_left.png}
-            \caption{Sampled poses of the LeJOS robot going left.}
-        \end{center}
-    \end{figure}
-
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/recorded_poses_slight_left.png}
-            \caption{Recorded poses of the LeJOS robot going slight left.}
-        \end{center}
-    \end{figure}
-
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/sampled_poses_slightLeft.png}
-            \caption{Sampled poses of the LeJOS robot going slight left.}
-        \end{center}
-    \end{figure}
+	\begin{figure}[h!]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/recorded_poses_slight_left.png} % first figure itself
+			\caption{Recorded poses of the LeJOS robot going slight left.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/sampled_poses_slightLeft.png} % second figure itself
+			\caption{Sampled poses of the LeJOS robot going slight left.}
+		\end{minipage}
+	\end{figure}
     
     \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/recorded_poses_right.png}
-            \caption{Recorded poses of the LeJOS robot going right.}
-        \end{center}
+    	\centering
+    	\begin{minipage}{0.45\textwidth}
+    		\centering
+    		\includegraphics[width=1\textwidth]{images/recorded_poses_right.png} % first figure itself
+    		\caption{Recorded poses of the LeJOS robot going right.}
+    	\end{minipage}\hfill
+    	\begin{minipage}{0.45\textwidth}
+    		\centering
+    		\includegraphics[width=1\textwidth]{images/sampled_poses_right.png} % second figure itself
+    		\caption{Sampled poses of the LeJOS robot going right.}
+    	\end{minipage}
     \end{figure}
-
+  
     \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/sampled_poses_right.png}
-            \caption{Sampled poses of the LeJOS robot going right.}
-        \end{center}
-    \end{figure}
-
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/recorded_poses_slight_right.png}
-            \caption{Recorded poses of the LeJOS robot going slight right.}
-        \end{center}
-    \end{figure}
-
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=12cm,fbox]{images/sampled_poses_slightRight.png}
-            \caption{Sampled poses of the LeJOS robot going slight right.}
-        \end{center}
-    \end{figure}
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/recorded_poses_slight_right.png} % first figure itself
+			\caption{Recorded poses of the LeJOS robot going slight right.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{images/sampled_poses_slightRight.png} % second figure itself
+			\caption{Sampled poses of the LeJOS robot going slight right.}
+		\end{minipage}
+	\end{figure}
     
     \begin{thebibliography}{9}
     	\bibitem{Thrun}
