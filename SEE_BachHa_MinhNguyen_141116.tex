@@ -192,7 +192,7 @@
 	\begin{center}
 		\setlength{\fboxsep}{0.5pt} %
 		\setlength{\fboxrule}{0.5pt}
-		\includegraphics[width=12cm,fbox]{images/raw_straight.png}
+		\includegraphics[width=\linewidth,fbox]{images/raw_straight.png}
 		\caption{Sampled poses of the LeJOS robot going straight.}
 	\end{center}
 	\end{figure}
@@ -201,7 +201,7 @@
 	\begin{center}
 		\setlength{\fboxsep}{0.5pt} %
 		\setlength{\fboxrule}{0.5pt}
-		\includegraphics[width=12cm,fbox]{images/raw_left.png}
+		\includegraphics[width=\linewidth,fbox]{images/raw_left.png}
 		\caption{Sampled poses of the LeJOS robot going left.}
 	\end{center}
 \end{figure}
@@ -210,7 +210,7 @@
 	\begin{center}
 		\setlength{\fboxsep}{0.5pt} %
 		\setlength{\fboxrule}{0.5pt}
-		\includegraphics[width=12cm,fbox]{images/raw_slightLeft.png}
+		\includegraphics[width=\linewidth,fbox]{images/raw_slightLeft.png}
 		\caption{Sampled poses of the LeJOS robot going slight left.}
 	\end{center}
 	\end{figure}
@@ -219,7 +219,7 @@
 	\begin{center}
 		\setlength{\fboxsep}{0.5pt} %
 		\setlength{\fboxrule}{0.5pt}
-		\includegraphics[width=12cm,fbox]{images/raw_right.png}
+		\includegraphics[width=\linewidth,fbox]{images/raw_right.png}
 		\caption{Sampled poses of the LeJOS robot going right.}
 	\end{center}
 	\end{figure}
@@ -228,7 +228,7 @@
 		\begin{center}
 			\setlength{\fboxsep}{0.5pt} %
 			\setlength{\fboxrule}{0.5pt}
-			\includegraphics[width=12cm,fbox]{images/raw_slightRight.png}
+			\includegraphics[width=\linewidth,fbox]{images/raw_slightRight.png}
 			\caption{Sampled poses of the LeJOS robot going slight right.}
 		\end{center}
 	\end{figure}
@@ -288,81 +288,82 @@
         \captionof{table}{Calculated parameters of the motion model}
     \end{figure}
 
+    \newpage
     The parameters are then used to sample poses and compare with observed data.
 
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\centering
-		\begin{minipage}{0.45\textwidth}
+		\begin{minipage}{\textwidth}
 			\centering
 			\includegraphics[width=1\textwidth]{images/recorded_poses_straight.png} % first figure itself
 			\caption{Recorded poses of the LeJOS robot going straight.}
 		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
+		\begin{minipage}{\textwidth}
 			\centering
 			\includegraphics[width=1\textwidth]{images/sampled_poses_straight.png} % second figure itself
 			\caption{Sampled poses of the LeJOS robot going straight.}
 		\end{minipage}
 	\end{figure}
 
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\centering
-		\begin{minipage}{0.45\textwidth}
+		\begin{minipage}{0.5\textwidth}
 			\centering
 			\includegraphics[width=1\textwidth]{images/recorded_poses_left.png} % first figure itself
 			\caption{Recorded poses of the LeJOS robot going left.}
 		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
+		\begin{minipage}{0.5\textwidth}
 			\centering
 			\includegraphics[width=1\textwidth]{images/sampled_poses_left.png} % second figure itself
 			\caption{Sampled poses of the LeJOS robot going left.}
 		\end{minipage}
 	\end{figure}
 
-	\begin{figure}[h!]
-		\centering
-		\begin{minipage}{0.45\textwidth}
-			\centering
-			\includegraphics[width=1\textwidth]{images/recorded_poses_slight_left.png} % first figure itself
-			\caption{Recorded poses of the LeJOS robot going slight left.}
-		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
-			\centering
-			\includegraphics[width=1\textwidth]{images/sampled_poses_slightLeft.png} % second figure itself
-			\caption{Sampled poses of the LeJOS robot going slight left.}
-		\end{minipage}
-	\end{figure}
-    
     \begin{figure}[h!]
-    	\centering
-    	\begin{minipage}{0.45\textwidth}
-    		\centering
-    		\includegraphics[width=1\textwidth]{images/recorded_poses_right.png} % first figure itself
-    		\caption{Recorded poses of the LeJOS robot going right.}
-    	\end{minipage}\hfill
-    	\begin{minipage}{0.45\textwidth}
-    		\centering
-    		\includegraphics[width=1\textwidth]{images/sampled_poses_right.png} % second figure itself
-    		\caption{Sampled poses of the LeJOS robot going right.}
-    	\end{minipage}
+        \centering
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{images/recorded_poses_right.png} % first figure itself
+            \caption{Recorded poses of the LeJOS robot going right.}
+        \end{minipage}\hfill
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{images/sampled_poses_right.png} % second figure itself
+            \caption{Sampled poses of the LeJOS robot going right.}
+        \end{minipage}
     \end{figure}
-  
-    \begin{figure}[h!]
-		\centering
-		\begin{minipage}{0.45\textwidth}
-			\centering
-			\includegraphics[width=1\textwidth]{images/recorded_poses_slight_right.png} % first figure itself
-			\caption{Recorded poses of the LeJOS robot going slight right.}
-		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
-			\centering
-			\includegraphics[width=1\textwidth]{images/sampled_poses_slightRight.png} % second figure itself
-			\caption{Sampled poses of the LeJOS robot going slight right.}
-		\end{minipage}
-	\end{figure}
-    
-    \begin{thebibliography}{9}
-    	\bibitem{Thrun}
-    	S. Thrun et al., “Velocity Motion Model,” in Probabilistic Robotics, ch. 5, pp. 121–132, Cambridge,
-    	MA: The MIT Press, 2006.
-    \end{thebibliography}
+
+    \begin{figure}[H]
+    \centering
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/recorded_poses_slight_left.png} % first figure itself
+        \caption{Recorded poses of the LeJOS robot going slight left.}
+    \end{minipage}\hfill
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/sampled_poses_slightLeft.png} % second figure itself
+        \caption{Sampled poses of the LeJOS robot going slight left.}
+    \end{minipage}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}{\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{images/recorded_poses_slight_right.png} % first figure itself
+            \caption{Recorded poses of the LeJOS robot going slight right.}
+        \end{minipage}\hfill
+        \begin{minipage}{\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{images/sampled_poses_slightRight.png} % second figure itself
+            \caption{Sampled poses of the LeJOS robot going slight right.}
+        \end{minipage}
+    \end{figure}
+
+\begin{thebibliography}{9}
+    \bibitem{Thrun}
+    S. Thrun et al., “Velocity Motion Model,” in Probabilistic Robotics, ch. 5, pp. 121–132, Cambridge,
+    MA: The MIT Press, 2006.
+\end{thebibliography}
 \end{document}
