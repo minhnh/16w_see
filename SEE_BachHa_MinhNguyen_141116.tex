@@ -152,7 +152,7 @@
             \item In all experiments, the recording process was started only when the robot is moving. The recording is stopped a little before the robot stop. This help eliminate the recording of robot location when it is not moving.  
         \end{itemize}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -161,7 +161,7 @@
         \end{center}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -170,7 +170,6 @@
         \end{center}
     \end{figure}
 
-\newpage
 \section{Motion Model Sampling}
     \begin{itemize}
         \item To perform the optimization, the whole recorded trajectories are divided into several smaller sequences.
@@ -180,7 +179,7 @@
         \item Plot of raw data can be seen in figure 4,5,6,7, and 8.
     \end{itemize}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -190,7 +189,7 @@
         \end{center}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -199,7 +198,7 @@
         \end{center}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -208,16 +207,7 @@
         \end{center}
     \end{figure}
 
-    \begin{figure}[h!]
-        \begin{center}
-            \setlength{\fboxsep}{0.5pt} %
-            \setlength{\fboxrule}{0.5pt}
-            \includegraphics[width=\linewidth,fbox]{images/raw_slightLeft.png}
-            \caption{Sampled poses of the LeJOS robot going slight left.}
-        \end{center}
-    \end{figure}
-    
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -225,8 +215,17 @@
             \caption{Sampled poses of the LeJOS robot going right.}
         \end{center}
     \end{figure}
-    
-    \begin{figure}[h!]
+
+    \begin{figure}[H]
+        \begin{center}
+            \setlength{\fboxsep}{0.5pt} %
+            \setlength{\fboxrule}{0.5pt}
+            \includegraphics[width=\linewidth,fbox]{images/raw_slightLeft.png}
+            \caption{Sampled poses of the LeJOS robot going slight left.}
+        \end{center}
+    \end{figure}
+
+    \begin{figure}[H]
         \begin{center}
             \setlength{\fboxsep}{0.5pt} %
             \setlength{\fboxrule}{0.5pt}
@@ -235,7 +234,6 @@
         \end{center}
     \end{figure}
 
-    \newpage
     \subsection{Parameters calculation}
     \begin{itemize}
         \item Alphas are parameters of the velocity motion model introduced by Thrun \cite{Thrun}.
@@ -288,7 +286,6 @@
         \captionof{table}{Calculated parameters of the motion model}
     \end{figure}
 
-    \newpage
     The parameters are then used to sample poses and compare with observed data.
 
     \begin{figure}[H]
@@ -304,7 +301,7 @@
             \caption{Sampled poses of the LeJOS robot going straight.}
         \end{minipage}
     \end{figure}
-    
+
     \begin{figure}[H]
         \centering
         \begin{minipage}{0.5\textwidth}
