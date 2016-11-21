@@ -54,7 +54,7 @@ def convert_to_csv(source_name, dest_name):
     duration = 6.0
     split_num = int(len(data)/(duration/average_time_step))
 
-    base_name = os.path.splitext(source_name)[0]
+    base_name = os.path.splitext(os.path.basename(source_name))[0]
     # split a file into several trunks
     split_index = int(len(data)/split_num)
     estimate_index = split_index
