@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 
 def main(train_log_file):
-    train_info = np.genfromtxt(train_log_file, delimiter=',')
+    train_info = np.genfromtxt(train_log_file, delimiter=',', skip_header=1)
     plt.figure(figsize=(10, 7))
     ax = plt.subplot(111)
     acc_line, = plt.plot(train_info[:, 0], train_info[:, 1], '-r+',
@@ -23,7 +23,12 @@ def main(train_log_file):
     plt.title('Validation and training accuracy per epoch')
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
-    ax.set_ylim([0.0, 1.1])
+
+    min_y = np.min(np.min(train_info[:, 1]), np.min(train_info[:, 3]))
+    max_y = np.max(np.max(train_info[:, 1]), np.max(train_info[:, 3]))
+    range_y = max_y - min_y
+    ax.set_ylim([min_y - 0.1*range_y, max_y + 0.1*range_y])
+
     plt.grid()
     plt.show()
     return
