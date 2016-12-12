@@ -181,7 +181,7 @@
     \begin{figure}[H]
         \begin{center}
             \includegraphics[width=1.0\linewidth]{images/mnist_weights.png}
-            \caption{Model weights visualization}
+            \caption{Model weights visualization (testing on 0.33 of data)}
             \label{fig:weights}
         \end{center}
     \end{figure}
@@ -190,7 +190,7 @@
     \begin{figure}[H]
         \begin{center}
             \includegraphics[width=1.0\linewidth]{images/mnist_training_log.png}
-            \caption{Accuracy per epoch}
+            \caption{Accuracy per epoch (training on 0.67 of data)}
             \label{fig:train}
         \end{center}
     \end{figure}
@@ -204,8 +204,15 @@
     The training is then rerun with 0.7 ratio for the test set for 100 epochs:
     \begin{figure}[H]
         \begin{center}
+            \includegraphics[width=1.0\linewidth]{images/mnist_weights_more_test.png}
+            \caption{Model weights visualization (testing on 0.7 of data)}
+            \label{fig:weights_more_test}
+        \end{center}
+    \end{figure}
+    \begin{figure}[H]
+        \begin{center}
             \includegraphics[width=1.0\linewidth]{images/mnist_training_log_more_test.png}
-            \caption{Accuracy per epoch}
+            \caption{Accuracy per epoch (training on 0.3 of data)}
             \label{fig:train_more_test}
         \end{center}
     \end{figure}
@@ -256,7 +263,8 @@
         \end{array} \right] \]
         \item Comments:
         \begin{itemize}
-            \item
+            \item The trend is somewhat the same as with the 0.3 split.
+            \item The amount of misclassification increase because the number of test samples increase, however the percentage stay quite similar to the 0.3 split.
         \end{itemize}
     \end{itemize}
 
