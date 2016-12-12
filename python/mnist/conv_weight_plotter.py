@@ -1,6 +1,7 @@
 import sys
 from matplotlib import pyplot as plt
 from keras.models import model_from_json
+from keras.utils.visualize_util import plot
 
 
 def plot_weights(model):
@@ -12,6 +13,7 @@ def plot_weights(model):
         plt.imshow(conv_weights[i,0],cmap='hot',interpolation='none')
         plt.axis('off')
     plt.show()
+    plot(model, show_shapes=True, to_file="mnist_model.png")
     return
 
 
