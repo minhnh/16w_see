@@ -10,7 +10,7 @@ def main(train_log_file):
     ax = plt.subplot(111)
     acc_line, = plt.plot(train_info[:, 0], train_info[:, 1], '-r+',
                              markersize=4, label='train accuracy')
-    val_line, = plt.plot(train_info[:, 0], train_info[:, 3], '-g+',
+    val_line, = plt.plot(train_info[:, 0], train_info[:, 2], '-g+',
                              markersize=4, label='validation accuracy')
     # Shrink current axis's height by 10% on the bottom
     box = ax.get_position()
@@ -24,8 +24,8 @@ def main(train_log_file):
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
 
-    min_y = np.min(np.min(train_info[:, 1]), np.min(train_info[:, 3]))
-    max_y = np.max(np.max(train_info[:, 1]), np.max(train_info[:, 3]))
+    min_y = np.min(np.min(train_info[:, 1]), np.min(train_info[:, 2]))
+    max_y = np.max(np.max(train_info[:, 1]), np.max(train_info[:, 2]))
     range_y = max_y - min_y
     ax.set_ylim([min_y - 0.1*range_y, max_y + 0.1*range_y])
 

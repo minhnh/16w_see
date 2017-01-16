@@ -6,6 +6,8 @@ import numpy as np
 from sklearn.metrics import confusion_matrix
 from sklearn.datasets import fetch_mldata
 from sklearn.model_selection import train_test_split
+from sklearn import svm
+import util
 
 
 def categorial_to_number(label):
@@ -30,7 +32,8 @@ def test_network(model, X_test, Y_test):
             pass
         pass
 
-    print(acc/len(X_test))
+    acc /= len(X_test)
+    print('Test accuracy: ', acc)
     return acc, wrong_list, c_matrix
 
 
@@ -62,23 +65,11 @@ def create_model(nb_classes, batch_size):
     return model
 
 
-def main(num_epoch):
-    date_string = time.strftime("%Y%m%d")
-    np.random.seed(1337)  # for reproducibility
-    mnist = fetch_mldata('MNIST original')
-
-    data = mnist.data.reshape((len(mnist.data),1,28,28))
-    data = data.astype('float32')
-    data = data/255
-
-    testset_ratio = 0.33
-    X_train, X_test, Y_train, Y_test = train_test_split(data, mnist.target.astype('int'), test_size=testset_ratio)
-
+def train_cnn(X_train, Y_train, X_test, Y_test, nb_epoch, date_string):
     # convert class vectors to binary class matrices
     from keras.utils import np_utils
     nb_classes = 10
     batch_size = 128
-    nb_epoch = num_epoch
     Y_train = np_utils.to_categorical(Y_train, nb_classes)
     Y_test = np_utils.to_categorical(Y_test, nb_classes)
 
@@ -93,18 +84,54 @@ def main(num_epoch):
     from keras.callbacks import CSVLogger
     csv_logger = CSVLogger("%s_training.log" % base_name, append=False)
 
+    time1 = time.perf_counter()
     model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=nb_epoch,
-              verbose=1, validation_data=(X_test, Y_test), callbacks=[csv_logger])
+              verbose=2, validation_data=(X_test, Y_test), callbacks=[csv_logger])
+    time2 = time.perf_counter()
+    print("Train time: %f s" % (time2 - time1))
     model.save_weights(base_name + "_weights.h5")
-    score = model.evaluate(X_test, Y_test, verbose=0)
-    print('Test score:', score[0])
-    print('Test accuracy:', score[1])
 
     acc, w, c_matrix = test_network(model, X_test, Y_test)
-    print(c_matrix)
+    # print(c_matrix)
+    util.plot_confusion_matrix(c_matrix, list(range(10)), save_plot=True, title="confusion matrix CNN")
+    return
+
+
+def train_svm(train_x, train_y, test_x, test_y):
+    model = svm.SVC()
+    time1 = time.perf_counter()
+    model.fit(train_x, train_y)
+    time2 = time.perf_counter()
+    print("Train time: %f s" % (time2 - time1))
+    prediction = model.predict(test_x)
+    c_matrix = confusion_matrix(test_y, prediction, labels=list(range(10)))
+    accuracy = np.sum(np.diag(c_matrix)) / np.sum(c_matrix)
+    print("Accuracy: %f" % accuracy)
+    util.plot_confusion_matrix(c_matrix, list(range(10)), save_plot=True, title="confusion matrix SVM")
+    return
+
+
+def main(num_epoch, model):
+    date_string = time.strftime("%Y%m%d")
+    np.random.seed(1337)  # for reproducibility
+    mnist = fetch_mldata('MNIST original')
+
+    data = mnist.data.astype('float32')
+    data /= 255
+
+    testset_ratio = 0.33
+    X_train, X_test, Y_train, Y_test = train_test_split(data, mnist.target.astype('int'), test_size=testset_ratio)
+    if model == 'cnn':
+        X_train = X_train.reshape((len(X_train), 1, 28, 28))
+        X_test = X_test.reshape((len(X_test), 1, 28, 28))
+        train_cnn(X_train, Y_train, X_test, Y_test, num_epoch, date_string)
+    elif model == 'svm':
+        train_svm(X_train, Y_train, X_test, Y_test)
+        pass
+
     return
 
 
 if __name__ == '__main__':
-    num_epoch = int(sys.argv[1])
-    main(num_epoch)
+    num_epoch, model = int(sys.argv[1]), sys.argv[2]
+    main(num_epoch, model)
